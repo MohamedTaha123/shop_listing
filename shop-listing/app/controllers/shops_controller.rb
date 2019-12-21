@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all
+    @shops = Shop.all.order(:distance, :desc)
   end
 
   # GET /shops/1
@@ -60,6 +60,10 @@ class ShopsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like_shop; end
+
+  def unlike_shop; end
 
   private
 
