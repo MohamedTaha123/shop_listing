@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ShopsController < ApplicationController
-  before_action :set_shop, only: %i[show edit update destroy]
+  before_action :set_shop, only: %i[show edit update destroy like_shop unlike_shop]
 
   # GET /shops
   # GET /shops.json
@@ -61,9 +61,15 @@ class ShopsController < ApplicationController
     end
   end
 
-  def like_shop; end
+  def like_shop
+    @shop.liked_by current_user
+    redirect_to request.referer
+  end
 
-  def unlike_shop; end
+  def unlike_shop
+    @shop.unliked_by current_user
+    redirect_to request.referer
+  end
 
   private
 

@@ -19,10 +19,11 @@
         <td><%= shop.name %></td>
         <td><%= shop.distance %></td>
         <td><%= image_tag(shop.shop_image.url)  %></td>
-        <td><%= shop.user_id %></td>
         <td><%= link_to 'Show', shop %></td>
         <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
         <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'like', like_shop_path(shop), method: :put, remote: true %></td>
+        <td><%= button_to 'dislike', unlike_shop_path(shop), method: :put , remote: true%></td>
       </tr>
     <% end %>
   </tbody>
