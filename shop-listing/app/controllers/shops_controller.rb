@@ -71,6 +71,10 @@ class ShopsController < ApplicationController
     redirect_to request.referer
   end
 
+  def preferred_shops
+    @preferred_shops = current_user.votes.votables
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
