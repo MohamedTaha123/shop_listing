@@ -18,7 +18,7 @@
       <tr>
         <td><%= shop.name %></td>
         <td><%= shop.distance %></td>
-        <td><%= shop.shop_image %></td>
+        <td><%= image_tag(shop.shop_image.url)  %></td>
         <td><%= shop.user_id %></td>
         <td><%= link_to 'Show', shop %></td>
         <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
