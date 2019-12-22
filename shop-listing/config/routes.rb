@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :shops, only: %i[index new] do
+  resources :shops, except: %i[update destroy] do
     member do
       put 'like', to: 'shops#like_shop'
       put 'unlike', to: 'shops#unlike_shop'
