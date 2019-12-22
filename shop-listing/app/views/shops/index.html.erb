@@ -15,15 +15,17 @@
 
   <tbody>
     <% @shops.each do |shop| %>
-      <% if !current_user.voted_for? shop  %>
-        <tr>
-          <td><%= shop.name %></td>
-          <td><%= shop.distance %></td>
-          <td><%= image_tag(shop.shop_image.url)  %></td>
-          <td><%= button_to 'like', like_shop_path(shop), method: :put, remote: true, class: 'button is-light is-small is-primary' %></td>
-          <td><%= button_to 'dislike', unlike_shop_path(shop), method: :put , remote: true, class: 'button is-light is-small is-danger' %></td>
-        </tr>
-      <% end %>
+      
+     
+          <tr>
+            <td><%= shop.name %></td>
+            <td><%= shop.distance %></td>
+            <td><%= image_tag(shop.shop_image.url)  %></td>
+            <td><%= button_to 'like', like_shop_path(shop), method: :put, remote: true, class: 'button is-light is-small is-primary' %></td>
+            <td><%= button_to 'dislike', unlike_shop_path(shop), method: :put , remote: true, class: 'button is-light is-small is-danger' %></td>
+          </tr>
+       
+          
     <% end %>
   </tbody>
 </table>

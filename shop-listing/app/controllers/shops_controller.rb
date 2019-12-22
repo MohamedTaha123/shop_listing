@@ -67,13 +67,15 @@ class ShopsController < ApplicationController
   end
 
   def unlike_shop
-    @shop.unliked_by current_user
+    @shop.downvote_from current_user
     redirect_to request.referer
   end
 
   def preferred_shops
-    @preferred_shops = current_user.votes.votables
+    @preferred_shops = current_user.find_up_voted_items
   end
+
+  def nearby_shops; end
 
   private
 
