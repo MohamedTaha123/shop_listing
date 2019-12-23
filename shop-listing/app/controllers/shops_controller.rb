@@ -2,7 +2,7 @@
 
 class ShopsController < ApplicationController
   before_action :set_shop, only: %i[show edit update destroy like_shop unlike_shop]
-  before_action :authenticate_user!
+  before_action :authenticate_user! , only: %i[ new create like_shop unlike_shop]
   # GET /shops
   # GET /shops.json
   def index

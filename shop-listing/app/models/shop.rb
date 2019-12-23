@@ -5,5 +5,5 @@ class Shop < ApplicationRecord
 
   mount_uploader :shop_image, ShopImageUploader
   acts_as_votable
-  validates_presence_of :shop_image, :name, :distance
+  validates_presence_of :name, :distance
 end
