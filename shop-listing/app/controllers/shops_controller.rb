@@ -63,12 +63,12 @@ class ShopsController < ApplicationController
 
   def like_shop
     @shop.liked_by current_user
-    redirect_to request.referer
+    redirect_back(fallback_location: shops_url)
   end
 
   def unlike_shop
     @shop.downvote_from current_user
-    redirect_to request.referer
+    redirect_back(fallback_location: shops_url)
   end
 
   def preferred_shops

@@ -35,4 +35,31 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should  get preferred shops if  logged in' do
+    sign_in @user
+    get preferred_url
+    assert_response :success
+  end
+
+  test 'should not get preferred shops if logged out' do 
+    sign_out @user
+    get preferred_url
+    assert_response :redirect
+  end
+
+  test 'should upvote a shop' do
+    sign_in @user
+    assert_difference('@user.find_up_voted_items.count') do
+      put like_shop_url(@shop)
+    end
+    assert_redirected_to shops_url
+  end
+
+  test 'should downvote a shop' do
+    sign_in @user
+    assert_difference('@user.find_down_voted_items.count') do
+      put unlike_shop_url(@shop)
+    end
+    assert_redirected_to shops_url
+  end
 end
