@@ -15,3 +15,9 @@ rails s
 ```
 
 Your app should now be running on [localhost:3000](http://localhost:3000/).
+ ## Running tests with MiniTest
+ 
+```sh
+  cd shop_listing
+  rails test
+```
