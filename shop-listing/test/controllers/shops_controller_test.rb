@@ -23,8 +23,7 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Shop.count') do
       post shops_url, params: { shop: { distance: 100,
                                         name: 'Shop3',
-                                        shop_image: 'Shop Image'
-                                         } }
+                                        shop_image: 'Shop Image' } }
     end
 
     assert_redirected_to shop_url(Shop.last)
@@ -41,7 +40,7 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should not get preferred shops if logged out' do 
+  test 'should not get preferred shops if logged out' do
     sign_out @user
     get preferred_url
     assert_response :redirect
@@ -61,5 +60,25 @@ class ShopsControllerTest < ActionDispatch::IntegrationTest
       put unlike_shop_url(@shop)
     end
     assert_redirected_to shops_url
+  end
+
+  test 'should not upvote a shop when logged out' do
+    sign_out @user
+    put like_shop_url(@shop)
+    assert_response :redirect
+  end
+
+  test 'should not downvote a shop when logged out' do
+    sign_out @user
+    put unlike_shop_url(@shop)
+    assert_response :redirect
+  end
+
+  test 'should get preferred shops when logged in ' do
+    sign_in @user
+    put like_shop_url(@shop)
+    assert_equal(1, @shop.votes_for.size) do
+      get preferred_url
+    end
   end
 end
