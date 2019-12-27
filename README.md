@@ -21,3 +21,8 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
   cd shop_listing
   rails test
 ```
+## Running Rspec tests
+```sh
+cd spec
+rails spec models/example_spec.rb
+```
