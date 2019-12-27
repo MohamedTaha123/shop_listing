@@ -24,5 +24,5 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 ## Running Rspec tests
 ```sh
 cd spec
-rails spec models/example_spec.rb
+bundle exec rspec models/example_spec.rb
 ```
